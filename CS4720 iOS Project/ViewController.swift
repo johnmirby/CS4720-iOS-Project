@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  CS4720 iOS Project
 //
-//  Created by David Irby on 10/16/15.
+//  Created by John Irby on 10/16/15.
 //  Copyright © 2015 John Irby. All rights reserved.
 //
 
