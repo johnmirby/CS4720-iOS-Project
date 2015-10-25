@@ -11,13 +11,24 @@ import MapKit
 
 class ViewController: UIViewController {
 
+    var nameToDisplay = ""
+    
     @IBOutlet weak var editText: UITextField!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var welcomeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // set welcome message from user info name
+        if (nameToDisplay == ""){
+            welcomeLabel.text = "No user info entered."
+        }
+        else{
+            welcomeLabel.text = "Welcome " + nameToDisplay + "!"
+        }
         
         // set initial location in UVA
         let initialLocation = CLLocation(latitude: 38.0350, longitude: -78.5050)

@@ -89,7 +89,7 @@
                                 <animations/>
                                 <accessibility key="accessibilityConfiguration" hint="Email"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                         </subviews>
                         <animations/>
@@ -98,6 +98,11 @@
                     <navigationItem key="navigationItem" title="User Information" id="1Eg-wV-8DQ">
                         <barButtonItem key="rightBarButtonItem" id="Vae-Hd-8v2"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailText" destination="ZH5-h7-1jW" id="zpw-RI-dFM"/>
+                        <outlet property="firstNameText" destination="YcK-gY-r4H" id="pyI-3A-QE2"/>
+                        <outlet property="lastNameText" destination="C7d-Xc-9Aj" id="VPC-br-uQk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ptw-6W-hIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,7 +125,7 @@
                                 <animations/>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QPY-mx-hZf">
-                                <rect key="frame" x="83" y="94" width="154" height="81"/>
+                                <rect key="frame" x="83" y="130" width="154" height="81"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PRX-xe-UTU">
                                         <rect key="frame" x="0.0" y="0.0" width="154" height="81"/>
@@ -177,6 +182,13 @@
                                 </subviews>
                                 <animations/>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ8-LZ-Q3b">
+                                <rect key="frame" x="0.0" y="82" width="320" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -186,6 +198,7 @@
                         <outlet property="editText" destination="jrx-CX-yI2" id="gEd-dT-Hm7"/>
                         <outlet property="label" destination="11k-Q8-vNV" id="Kmy-Nw-EUh"/>
                         <outlet property="mapView" destination="e9I-kl-MJs" id="oQk-SG-Ehe"/>
+                        <outlet property="welcomeLabel" destination="qQ8-LZ-Q3b" id="Gpm-gP-pVy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -194,6 +207,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uWq-uN-CEu"/>
+        <segue reference="AwL-3Z-yUb"/>
     </inferredMetricsTieBreakers>
 </document>
