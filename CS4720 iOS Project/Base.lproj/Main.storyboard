@@ -14,7 +14,7 @@
                         <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gHq-Kn-9Uu"/>
+                        <segue destination="pgx-MF-wdn" kind="relationship" relationship="rootViewController" id="ADN-LU-4Df"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvc-4L-waO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -58,11 +58,17 @@
                                 <rect key="frame" x="136" y="371" width="49" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="push" identifier="infoSegue" id="uWq-uN-CEu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HS-ED-NaK">
                                 <rect key="frame" x="97" y="429" width="126" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Skip this for now..."/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="push" identifier="skipInfoSegue" id="AwL-3Z-yUb"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YcK-gY-r4H">
                                 <rect key="frame" x="112" y="164" width="97" height="30"/>
@@ -95,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ptw-6W-hIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="232" y="197"/>
+            <point key="canvasLocation" x="-270" y="197"/>
         </scene>
         <!--UVA Bucket List-->
         <scene sceneID="tne-QT-ifu">
@@ -175,13 +181,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="UVA Bucket List" id="pKC-Kt-vWV">
-                        <barButtonItem key="rightBarButtonItem" title="Info" id="6bB-ig-1MN">
-                            <connections>
-                                <segue destination="pgx-MF-wdn" kind="push" id="Sb1-Pa-rJm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="UVA Bucket List" id="pKC-Kt-vWV"/>
                     <connections>
                         <outlet property="editText" destination="jrx-CX-yI2" id="gEd-dT-Hm7"/>
                         <outlet property="label" destination="11k-Q8-vNV" id="Kmy-Nw-EUh"/>
@@ -190,7 +190,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202" y="197"/>
+            <point key="canvasLocation" x="94" y="197"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="uWq-uN-CEu"/>
+    </inferredMetricsTieBreakers>
 </document>
