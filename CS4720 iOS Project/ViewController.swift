@@ -13,9 +13,6 @@ class ViewController: UIViewController {
 
     var nameToDisplay = ""
     
-    @IBOutlet weak var editText: UITextField!
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var welcomeLabel: UILabel!
     
     override func viewDidLoad() {
@@ -29,10 +26,6 @@ class ViewController: UIViewController {
         else{
             welcomeLabel.text = "Welcome " + nameToDisplay + "!"
         }
-        
-        // set initial location in UVA
-        let initialLocation = CLLocation(latitude: 38.0350, longitude: -78.5050)
-        centerMapOnLocation(initialLocation)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,21 +33,5 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    
-    @IBAction func setText(sender: UIButton) {
-        label.text = editText.text
-    }
-    
-    let regionRadius: CLLocationDistance = 1000
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-            regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: true)
-        
-        let point = MKPointAnnotation()
-        point.coordinate = CLLocationCoordinate2D(latitude: 38.0350, longitude: -78.5050)
-        point.title = "University of Virginia"
-        mapView.addAnnotation(point)
-    }
 }
 

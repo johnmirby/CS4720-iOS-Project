@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController4: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate  {
     
     var nameToDisplay = ""
     var imagePicker: UIImagePickerController!
     
+    @IBOutlet weak var descriptionText: UITextField!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet var label: UILabel!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +30,19 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
         else{
             label.text = nameToDisplay
         }
+        
+        // Set initial location to UVA
+        let initialLocation = CLLocation(latitude: 38.0350, longitude: -78.5050)
+        centerMapOnLocation(initialLocation)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func updateDescription(sender: AnyObject) {
+        descriptionLabel.text! = descriptionText.text!;
     }
     
     @IBAction func addImage(sender: UIButton) {
@@ -46,15 +58,20 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    let regionRadius: CLLocationDistance = 1000
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+            regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+        
+        let point = MKPointAnnotation()
+        point.coordinate = CLLocationCoordinate2D(latitude: 38.0350, longitude: -78.5050)
+        point.title = "University of Virginia"
+        mapView.addAnnotation(point)
     }
-    */
-
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
 }
