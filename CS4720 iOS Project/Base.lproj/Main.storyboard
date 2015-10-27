@@ -219,12 +219,16 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sZ-nw-A9t">
                                 <rect key="frame" x="123" y="188" width="74" height="30"/>
                                 <state key="normal" title="Add Image"/>
+                                <connections>
+                                    <action selector="addImage:" destination="70Z-Y4-llm" eventType="touchUpInside" id="Xfp-D7-ddZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Bl3-bK-YNf"/>
                     <connections>
+                        <outlet property="imageView" destination="V0C-64-Xdz" id="gzR-d1-0PB"/>
                         <outlet property="label" destination="tf1-Jb-UYx" id="uUx-OJ-opM"/>
                     </connections>
                 </viewController>
