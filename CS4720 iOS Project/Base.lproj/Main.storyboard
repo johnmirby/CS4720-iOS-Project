@@ -139,6 +139,9 @@
                                 <rect key="frame" x="123" y="268" width="75" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Create List"/>
+                                <connections>
+                                    <segue destination="LMO-gT-iFh" kind="push" id="9XY-Lc-3dY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJV-5t-Kuj">
                                 <rect key="frame" x="120" y="339" width="81" height="30"/>
@@ -162,10 +165,10 @@
             </objects>
             <point key="canvasLocation" x="86" y="197"/>
         </scene>
-        <!--216 Things-->
+        <!--116 Things-->
         <scene sceneID="9iS-Ne-ePs">
             <objects>
-                <viewController title="216 Things" id="72S-0I-h3g" customClass="ViewController3" customModule="CS4720_iOS_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="116 Things" id="72S-0I-h3g" customClass="ViewController3" customModule="CS4720_iOS_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZHZ-r9-qd6"/>
                         <viewControllerLayoutGuide type="bottom" id="xPs-Rc-Fyp"/>
@@ -195,6 +198,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cd2-sY-6ZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="445" y="197"/>
+        </scene>
+        <!--Create List-->
+        <scene sceneID="8VO-gY-lhV">
+            <objects>
+                <viewController title="Create List" id="LMO-gT-iFh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NxI-jL-DkI"/>
+                        <viewControllerLayoutGuide type="bottom" id="QCd-H4-JMg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sP2-LE-6O9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Udi-G2-o9r"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="81w-bY-6jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="808" y="197"/>
         </scene>
         <!--Detail View-->
         <scene sceneID="pcn-9k-nm5">

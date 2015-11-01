@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         
         // set welcome message from user info name
         if (nameToDisplay == ""){
-            welcomeLabel.text = "No user info entered."
+            welcomeLabel.text = "No User Information Submitted"
         }
         else{
             welcomeLabel.text = "Welcome " + nameToDisplay + "!"

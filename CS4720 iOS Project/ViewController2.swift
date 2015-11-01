@@ -14,8 +14,25 @@ class ViewController2: UIViewController {
     @IBOutlet weak var lastNameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     
+    var firstName = ""
+    var lastName = ""
+    var email = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            let path = NSTemporaryDirectory() + "userInfo.txt"
+            let readString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+            var valuesArray = readString.componentsSeparatedByString(",")
+            firstName = valuesArray[0]
+            lastName = valuesArray[1]
+            email = valuesArray[2]
+            firstNameText.text! = firstName
+            lastNameText.text! = lastName
+            emailText.text! = valuesArray[2]
+        } catch let error as NSError {
+            print(error)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -23,11 +40,23 @@ class ViewController2: UIViewController {
             if let svc = segue.destinationViewController as? ViewController {
                 svc.nameToDisplay = firstNameText.text! + " " + lastNameText.text!
             }
+            let userInfoText = firstNameText.text! + "," + lastNameText.text! + "," + emailText.text!
+            let path = NSTemporaryDirectory() + "userInfo.txt"
+            do {
+                try userInfoText.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+            } catch let error as NSError {
+                print(error)
+            }
         }
         if (segue.identifier == "skipInfoSegue"){
             if (firstNameText.hasText() && lastNameText.hasText()){
                 if let svc = segue.destinationViewController as? ViewController {
-                    svc.nameToDisplay = firstNameText.text! + " " + lastNameText.text!
+                    if (firstName == "" && lastName == "") {
+                        svc.nameToDisplay = ""
+                    }
+                    else {
+                        svc.nameToDisplay = firstName + " " + lastName
+                    }
                 }
             }
         }
