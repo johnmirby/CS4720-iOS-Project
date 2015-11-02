@@ -12,6 +12,7 @@
 		476AB81D1BD1AB6B0081F5F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476AB81B1BD1AB6B0081F5F8 /* Main.storyboard */; };
 		476AB81F1BD1AB6B0081F5F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476AB81E1BD1AB6B0081F5F8 /* Assets.xcassets */; };
 		476AB8221BD1AB6B0081F5F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476AB8201BD1AB6B0081F5F8 /* LaunchScreen.storyboard */; };
+		70365C821BE81470009A7214 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70365C811BE81470009A7214 /* CoreLocation.framework */; };
 		70877C721BDCAA030077237A /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70877C711BDCAA030077237A /* ViewController2.swift */; };
 		70F40D231BD2D8D6005F8218 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F40D221BD2D8D6005F8218 /* MapKit.framework */; };
 		B467BDE61BDF2C0500EE13F8 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467BDE51BDF2C0500EE13F8 /* ViewController3.swift */; };
@@ -26,6 +27,7 @@
 		476AB81E1BD1AB6B0081F5F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		476AB8211BD1AB6B0081F5F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		476AB8231BD1AB6B0081F5F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70365C811BE81470009A7214 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		70877C711BDCAA030077237A /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		70F40D221BD2D8D6005F8218 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B467BDE51BDF2C0500EE13F8 /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70365C821BE81470009A7214 /* CoreLocation.framework in Frameworks */,
 				70F40D231BD2D8D6005F8218 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,6 +50,7 @@
 		476AB80B1BD1AB6B0081F5F8 = {
 			isa = PBXGroup;
 			children = (
+				70365C811BE81470009A7214 /* CoreLocation.framework */,
 				70F40D221BD2D8D6005F8218 /* MapKit.framework */,
 				476AB8161BD1AB6B0081F5F8 /* CS4720 iOS Project */,
 				476AB8151BD1AB6B0081F5F8 /* Products */,
