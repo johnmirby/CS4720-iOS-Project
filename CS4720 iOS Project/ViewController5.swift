@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController5: UIViewController {
     
-    var tableData = ["1. Sample List Item"]
+    var tableData = [String]()
     var valueToPass:String!
     var listCount = 1
     
@@ -20,7 +20,14 @@ class ViewController5: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        let path = NSTemporaryDirectory() + "customList.txt"
+        do {
+            let readString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+            tableData = readString.componentsSeparatedByString(",")
+            listCount = tableData.count + 1
+        } catch let error as NSError {
+            print(error)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,7 +69,7 @@ class ViewController5: UIViewController {
     }
     
     @IBAction func addItem(sender: AnyObject) {
-        if (tableData[0] == "1. Sample List Item") {
+        if (tableData.count == 0) {
             tableData.removeAll()
             tableData.append(String(listCount) + ". " + textField.text! as String!)
         }
@@ -74,4 +81,18 @@ class ViewController5: UIViewController {
         
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        let path = NSTemporaryDirectory() + "customList.txt"
+        let joined = tableData.joinWithSeparator(",")
+        do {
+            try joined.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+        } catch let error as NSError {
+            print(error)
+        }
+    }
 }
