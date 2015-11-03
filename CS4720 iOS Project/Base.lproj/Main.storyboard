@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gZd-oe-68o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gZd-oe-68o">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -238,6 +238,7 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="0.56272324429999998" blue="0.23505908210000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rm1-io-VlT"/>
                     <connections>
@@ -251,7 +252,7 @@
         <!--Create List-->
         <scene sceneID="8VO-gY-lhV">
             <objects>
-                <viewController title="Create List" id="LMO-gT-iFh" sceneMemberID="viewController">
+                <viewController title="Create List" id="LMO-gT-iFh" customClass="ViewController5" customModule="CS4720_iOS_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NxI-jL-DkI"/>
                         <viewControllerLayoutGuide type="bottom" id="QCd-H4-JMg"/>
@@ -259,10 +260,44 @@
                     <view key="view" contentMode="scaleToFill" id="sP2-LE-6O9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tb0-78-CpY">
+                                <rect key="frame" x="87" y="139" width="144" height="30"/>
+                                <state key="normal" title="Add Item"/>
+                                <connections>
+                                    <action selector="addItem:" destination="LMO-gT-iFh" eventType="touchUpInside" id="hLd-FP-bL8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkH-Vq-kcU">
+                                <rect key="frame" x="87" y="72" width="144" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eXd-pN-Gfh">
+                                <rect key="frame" x="0.0" y="177" width="320" height="391"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="LMO-gT-iFh" id="n0j-SA-T5U"/>
+                                    <outlet property="delegate" destination="LMO-gT-iFh" id="AMQ-3h-LCk"/>
+                                </connections>
+                            </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zGh-n5-nUM">
+                                <rect key="frame" x="88" y="101" width="144" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="0.56272324429999998" blue="0.23505908210000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Udi-G2-o9r"/>
+                    <connections>
+                        <outlet property="TextField" destination="zGh-n5-nUM" id="w0H-l0-OcY"/>
+                        <outlet property="tableView" destination="eXd-pN-Gfh" id="sV9-IG-Zt8"/>
+                        <outlet property="textField" destination="zGh-n5-nUM" id="2cz-5Z-xMt"/>
+                        <segue destination="70Z-Y4-llm" kind="push" identifier="detailSegue" id="lS5-hk-Zvk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81w-bY-6jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -398,6 +433,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="uWq-uN-CEu"/>
-        <segue reference="ADN-LU-4Df"/>
+        <segue reference="jCK-kf-Vrv"/>
+        <segue reference="lS5-hk-Zvk"/>
     </inferredMetricsTieBreakers>
 </document>
