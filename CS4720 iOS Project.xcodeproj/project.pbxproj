@@ -17,6 +17,7 @@
 		70F40D231BD2D8D6005F8218 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F40D221BD2D8D6005F8218 /* MapKit.framework */; };
 		B467BDE61BDF2C0500EE13F8 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467BDE51BDF2C0500EE13F8 /* ViewController3.swift */; };
 		B467BDE81BDF2F1600EE13F8 /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467BDE71BDF2F1600EE13F8 /* ViewController4.swift */; };
+		B4AE1B861BE846F7004B55A5 /* ViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE1B851BE846F7004B55A5 /* ViewController5.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		70F40D221BD2D8D6005F8218 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B467BDE51BDF2C0500EE13F8 /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		B467BDE71BDF2F1600EE13F8 /* ViewController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
+		B4AE1B851BE846F7004B55A5 /* ViewController5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController5.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				70877C711BDCAA030077237A /* ViewController2.swift */,
 				B467BDE51BDF2C0500EE13F8 /* ViewController3.swift */,
 				B467BDE71BDF2F1600EE13F8 /* ViewController4.swift */,
+				B4AE1B851BE846F7004B55A5 /* ViewController5.swift */,
 				476AB81B1BD1AB6B0081F5F8 /* Main.storyboard */,
 				476AB81E1BD1AB6B0081F5F8 /* Assets.xcassets */,
 				476AB8201BD1AB6B0081F5F8 /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 				476AB8181BD1AB6B0081F5F8 /* AppDelegate.swift in Sources */,
 				B467BDE61BDF2C0500EE13F8 /* ViewController3.swift in Sources */,
 				70877C721BDCAA030077237A /* ViewController2.swift in Sources */,
+				B4AE1B861BE846F7004B55A5 /* ViewController5.swift in Sources */,
 				B467BDE81BDF2F1600EE13F8 /* ViewController4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
