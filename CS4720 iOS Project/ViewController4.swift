@@ -23,12 +23,17 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
     
+    var imageVal:UIImage?
+    var descriptionVal:String?
+    var locationVal:CLLocation?
     
     @IBAction func updateMarkerLocation(sender: AnyObject) {
         let point = MKPointAnnotation()
         if (locationManager?.location != nil){
             point.coordinate = (locationManager?.location?.coordinate)!
             mapView.addAnnotation(point)
+            centerMapOnLocation((locationManager?.location)!)
+            locationVal = locationManager?.location
         }
         else {
             displayAlertWithTitle("No Current Location", message: "Please wait for the current location to be updated.")
@@ -145,6 +150,44 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
         // Set initial location to UVA
         let initialLocation = CLLocation(latitude: 38.0350, longitude: -78.5050)
         centerMapOnLocation(initialLocation)
+        
+        let imagePath = NSTemporaryDirectory() + nameToDisplay + "_image.png"
+        let descriptionPath = NSTemporaryDirectory() + nameToDisplay + "_description.txt"
+        let locationPath = NSTemporaryDirectory() + nameToDisplay + "_location.txt"
+        do {
+            imageVal = try UIImage(contentsOfFile: imagePath)
+            
+            //Update the image
+            imageView.image = imageVal
+            
+        } catch let error as NSError {
+            print(error)
+        }
+        do {
+            descriptionVal = try String(contentsOfFile: descriptionPath, encoding: NSUTF8StringEncoding)
+            
+            //Update the description
+            descriptionLabel.text! = descriptionVal!
+            
+        } catch let error as NSError {
+            print(error)
+        }
+        do {
+            let readString = try String(contentsOfFile: locationPath, encoding: NSUTF8StringEncoding)
+            var valuesArray = readString.componentsSeparatedByString(",")
+            let lat = Double(valuesArray[0])
+            let lon = Double(valuesArray[1])
+            locationVal = CLLocation(latitude: lat!, longitude: lon!)
+            
+            //Update the mapView
+            let point = MKPointAnnotation()
+            point.coordinate = (locationVal?.coordinate)!
+            mapView.addAnnotation(point)
+            centerMapOnLocation(locationVal!)
+            
+        } catch let error as NSError {
+            print(error)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -153,7 +196,8 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
     }
     
     @IBAction func updateDescription(sender: AnyObject) {
-        descriptionLabel.text! = descriptionText.text!;
+        descriptionLabel.text! = descriptionText.text!
+        descriptionVal = descriptionText.text!
     }
     
     @IBAction func addImage(sender: UIButton) {
@@ -167,6 +211,7 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        imageVal = imageView.image
     }
     
     let regionRadius: CLLocationDistance = 1000
@@ -179,5 +224,34 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if (imageVal != nil){
+            let path = NSTemporaryDirectory() + nameToDisplay + "_image.png"
+            do {
+                try UIImagePNGRepresentation(imageVal!)?.writeToFile(path, atomically: true)
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        if (descriptionVal != nil){
+            let path = NSTemporaryDirectory() + nameToDisplay + "_description.txt"
+            do {
+                try descriptionVal!.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+                
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        if (locationVal != nil){
+            let path = NSTemporaryDirectory() + nameToDisplay + "_location.txt"
+            let locationString = (locationVal?.coordinate.latitude.description)! + "," + (locationVal?.coordinate.longitude.description)!
+            do {
+                try locationString.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+            } catch let error as NSError {
+                print(error)
+            }
+        }
     }
 }
