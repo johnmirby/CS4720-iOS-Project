@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreMotion
 
 class ViewController3: UIViewController {
     
@@ -53,5 +54,16 @@ class ViewController3: UIViewController {
         
         valueToPass = currentCell.textLabel!.text
         performSegueWithIdentifier("detailSegue", sender: self)
+    }
+    
+    override func motionEnded(motion: UIEventSubtype,
+        withEvent event: UIEvent?) {
+            
+            if motion == .MotionShake{
+                let random = Int(arc4random_uniform(116))
+                valueToPass = tableData[random]
+                performSegueWithIdentifier("detailSegue", sender: nil)
+            }
+            
     }
 }
