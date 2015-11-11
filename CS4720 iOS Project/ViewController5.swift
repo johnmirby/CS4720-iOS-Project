@@ -12,7 +12,6 @@ class ViewController5: UIViewController {
     
     var tableData = [String]()
     var valueToPass:String!
-    var listCount = 1
     
     @IBOutlet var textField: UITextField!
     @IBOutlet var tableView: UITableView!
@@ -23,8 +22,7 @@ class ViewController5: UIViewController {
         let path = NSTemporaryDirectory() + "customList.txt"
         do {
             let readString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
-            tableData = readString.componentsSeparatedByString(",")
-            listCount = tableData.count + 1
+            tableData = readString.componentsSeparatedByString("\n")
         } catch let error as NSError {
             print(error)
         }
@@ -69,14 +67,7 @@ class ViewController5: UIViewController {
     }
     
     @IBAction func addItem(sender: AnyObject) {
-        if (tableData.count == 0) {
-            tableData.removeAll()
-            tableData.append(String(listCount) + ". " + textField.text! as String!)
-        }
-        else {
-            listCount++
-            tableData.append(String(listCount) + ". " + textField.text! as String!)
-        }
+        tableData.append(String(tableData.count + 1) + ". " + textField.text! as String!)
         tableView.reloadData()
         
     }
@@ -88,7 +79,7 @@ class ViewController5: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         let path = NSTemporaryDirectory() + "customList.txt"
-        let joined = tableData.joinWithSeparator(",")
+        let joined = tableData.joinWithSeparator("\n")
         do {
             try joined.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
         } catch let error as NSError {
