@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController4: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate  {
+class ViewController6: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate  {
     
     var locationManager: CLLocationManager?
     
@@ -138,7 +138,7 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         if (nameToDisplay == ""){
             label.text = "No item name"
@@ -189,7 +189,7 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
             print(error)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -205,7 +205,7 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
             imagePicker =  UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .Camera
-        
+            
             presentViewController(imagePicker, animated: true, completion: nil)
         }
         else{

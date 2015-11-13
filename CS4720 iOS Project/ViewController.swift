@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     var nameToDisplay = ""
     
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var welcomeLabel: UILabel!
     
     override func viewDidLoad() {
@@ -26,6 +27,8 @@ class ViewController: UIViewController {
         else{
             welcomeLabel.text = "Welcome " + nameToDisplay + "!"
         }
+        scoreLabel.text = String(0) + " of 116 Bucket List Items Completed"
+        
     }
 
     override func didReceiveMemoryWarning() {

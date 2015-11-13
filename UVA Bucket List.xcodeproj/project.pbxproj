@@ -17,6 +17,7 @@
 		70F40D231BD2D8D6005F8218 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F40D221BD2D8D6005F8218 /* MapKit.framework */; };
 		B467BDE61BDF2C0500EE13F8 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467BDE51BDF2C0500EE13F8 /* ViewController3.swift */; };
 		B467BDE81BDF2F1600EE13F8 /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467BDE71BDF2F1600EE13F8 /* ViewController4.swift */; };
+		B49F405C1BF59C6400831BB3 /* ViewController6.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F405B1BF59C6400831BB3 /* ViewController6.swift */; };
 		B4AE1B861BE846F7004B55A5 /* ViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE1B851BE846F7004B55A5 /* ViewController5.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,8 @@
 		70F40D221BD2D8D6005F8218 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B467BDE51BDF2C0500EE13F8 /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		B467BDE71BDF2F1600EE13F8 /* ViewController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
+		B49F40571BF59C4D00831BB3 /* UVA Bucket List-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UVA Bucket List-Bridging-Header.h"; sourceTree = "<group>"; };
+		B49F405B1BF59C6400831BB3 /* ViewController6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController6.swift; sourceTree = "<group>"; };
 		B4AE1B851BE846F7004B55A5 /* ViewController5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController5.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,10 +79,12 @@
 				B467BDE51BDF2C0500EE13F8 /* ViewController3.swift */,
 				B467BDE71BDF2F1600EE13F8 /* ViewController4.swift */,
 				B4AE1B851BE846F7004B55A5 /* ViewController5.swift */,
+				B49F405B1BF59C6400831BB3 /* ViewController6.swift */,
 				476AB81B1BD1AB6B0081F5F8 /* Main.storyboard */,
 				476AB81E1BD1AB6B0081F5F8 /* Assets.xcassets */,
 				476AB8201BD1AB6B0081F5F8 /* LaunchScreen.storyboard */,
 				476AB8231BD1AB6B0081F5F8 /* Info.plist */,
+				B49F40571BF59C4D00831BB3 /* UVA Bucket List-Bridging-Header.h */,
 			);
 			path = "CS4720 iOS Project";
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 		476AB80C1BD1AB6B0081F5F8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "John Irby";
 				TargetAttributes = {
@@ -157,6 +163,7 @@
 			files = (
 				476AB81A1BD1AB6B0081F5F8 /* ViewController.swift in Sources */,
 				476AB8181BD1AB6B0081F5F8 /* AppDelegate.swift in Sources */,
+				B49F405C1BF59C6400831BB3 /* ViewController6.swift in Sources */,
 				B467BDE61BDF2C0500EE13F8 /* ViewController3.swift in Sources */,
 				70877C721BDCAA030077237A /* ViewController2.swift in Sources */,
 				B4AE1B861BE846F7004B55A5 /* ViewController5.swift in Sources */,
@@ -271,6 +278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "CS4720 iOS Project/Info.plist";
@@ -278,6 +286,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "virginia.edu.CS4720-iOS-Project";
 				PRODUCT_NAME = "UVA Bucket List";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CS4720 iOS Project/UVA Bucket List-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -286,6 +296,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "CS4720 iOS Project/Info.plist";
@@ -293,6 +304,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "virginia.edu.CS4720-iOS-Project";
 				PRODUCT_NAME = "UVA Bucket List";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CS4720 iOS Project/UVA Bucket List-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

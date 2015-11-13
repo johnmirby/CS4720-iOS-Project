@@ -39,8 +39,8 @@ class ViewController5: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "detailSegue"){
-            if let svc = segue.destinationViewController as? ViewController4 {
+        if (segue.identifier == "customDetailSegue"){
+            if let svc = segue.destinationViewController as? ViewController6 {
                 svc.nameToDisplay = valueToPass
             }
         }
@@ -63,7 +63,7 @@ class ViewController5: UIViewController {
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
         
         valueToPass = currentCell.textLabel!.text
-        performSegueWithIdentifier("detailSegue", sender: self)
+        performSegueWithIdentifier("customDetailSegue", sender: self)
     }
     
     @IBAction func addItem(sender: AnyObject) {
