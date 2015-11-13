@@ -14,9 +14,12 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
     
     var locationManager: CLLocationManager?
     
+    var bucketListNum = 0;
+    
     var nameToDisplay = ""
     var imagePicker: UIImagePickerController!
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var descriptionText: UITextField!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet var label: UILabel!
@@ -147,6 +150,14 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
             label.text = nameToDisplay
         }
         
+        do {
+            let path = NSTemporaryDirectory() + "totalScore.txt"
+            let readString = try String(contentsOfFile: path)
+            bucketListNum = Int(readString)!
+        } catch let error as NSError {
+            print(error)
+        }
+        
         // Set initial location to UVA
         let initialLocation = CLLocation(latitude: 38.0350, longitude: -78.5050)
         centerMapOnLocation(initialLocation)
@@ -154,11 +165,12 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
         let imagePath = NSTemporaryDirectory() + nameToDisplay + "_image.png"
         let descriptionPath = NSTemporaryDirectory() + nameToDisplay + "_description.txt"
         let locationPath = NSTemporaryDirectory() + nameToDisplay + "_location.txt"
+        let statusPath = NSTemporaryDirectory() + nameToDisplay + "_completedStatus.txt"
         do {
             imageVal = try UIImage(contentsOfFile: imagePath)
             
             //Update the image
-            imageView.image = imageVal
+            imageView.image = imageVal?.imageRotatedByDegrees(90, flip: false)
             
         } catch let error as NSError {
             print(error)
@@ -188,12 +200,29 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
         } catch let error as NSError {
             print(error)
         }
+        do {
+            let readString = try String(contentsOfFile: statusPath)
+            let index = Int(readString)
+            segmentedControl.selectedSegmentIndex = index!
+        } catch let error as NSError {
+            print(error)
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func segmentedControlIndexChanged(sender: AnyObject) {
+        if (segmentedControl.selectedSegmentIndex == 0){
+            bucketListNum++
+        }
+        else {
+            bucketListNum--
+        }
+    }
+    
     
     @IBAction func updateDescription(sender: AnyObject) {
         descriptionLabel.text! = descriptionText.text!
@@ -261,5 +290,64 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
                 print(error)
             }
         }
+        do {
+            let path = NSTemporaryDirectory() + nameToDisplay + "_completedStatus.txt"
+            let statusString = segmentedControl.selectedSegmentIndex.description
+            try statusString.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        do {
+            let path = NSTemporaryDirectory() + "totalScore.txt"
+            let writeString = bucketListNum.description
+            try writeString.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+}
+
+extension UIImage {
+    public func imageRotatedByDegrees(degrees: CGFloat, flip: Bool) -> UIImage {
+        let radiansToDegrees: (CGFloat) -> CGFloat = {
+            return $0 * (180.0 / CGFloat(M_PI))
+        }
+        let degreesToRadians: (CGFloat) -> CGFloat = {
+            return $0 / 180.0 * CGFloat(M_PI)
+        }
+        
+        // calculate the size of the rotated view's containing box for our drawing space
+        let rotatedViewBox = UIView(frame: CGRect(origin: CGPointZero, size: size))
+        let t = CGAffineTransformMakeRotation(degreesToRadians(degrees));
+        rotatedViewBox.transform = t
+        let rotatedSize = rotatedViewBox.frame.size
+        
+        // Create the bitmap context
+        UIGraphicsBeginImageContext(rotatedSize)
+        let bitmap = UIGraphicsGetCurrentContext()
+        
+        // Move the origin to the middle of the image so we will rotate and scale around the center.
+        CGContextTranslateCTM(bitmap, rotatedSize.width / 2.0, rotatedSize.height / 2.0);
+        
+        //   // Rotate the image context
+        CGContextRotateCTM(bitmap, degreesToRadians(degrees));
+        
+        // Now, draw the rotated/scaled image into the context
+        var yFlip: CGFloat
+        
+        if(flip){
+            yFlip = CGFloat(-1.0)
+        } else {
+            yFlip = CGFloat(1.0)
+        }
+        
+        CGContextScaleCTM(bitmap, yFlip, -1.0)
+        CGContextDrawImage(bitmap, CGRectMake(-size.width / 2, -size.height / 2, size.width, size.height), CGImage)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }

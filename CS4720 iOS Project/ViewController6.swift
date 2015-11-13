@@ -156,9 +156,9 @@ class ViewController6: UIViewController, UINavigationControllerDelegate, UIImage
         let locationPath = NSTemporaryDirectory() + nameToDisplay + "_location.txt"
         do {
             imageVal = try UIImage(contentsOfFile: imagePath)
-            
+
             //Update the image
-            imageView.image = imageVal
+            imageView.image = imageVal?.imageRotatedByDegrees(90, flip: false)
             
         } catch let error as NSError {
             print(error)

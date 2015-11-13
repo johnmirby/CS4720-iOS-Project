@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gZd-oe-68o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gZd-oe-68o">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -177,8 +177,9 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnW-sm-Ufi">
                                 <rect key="frame" x="139" y="213" width="42" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ8-LZ-Q3b">
@@ -421,12 +422,16 @@
                                     <constraint firstAttribute="width" constant="125" id="nzW-e6-6kB"/>
                                 </constraints>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Gqh-m7-4OK">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gqh-m7-4OK">
                                 <rect key="frame" x="0.0" y="180" width="320" height="29"/>
+                                <animations/>
                                 <segments>
                                     <segment title="Completed"/>
                                     <segment title="Not Completed"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlIndexChanged:" destination="70Z-Y4-llm" eventType="valueChanged" id="73g-SK-afj"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf1-Jb-UYx">
                                 <rect key="frame" x="120" y="132" width="81" height="40"/>
@@ -471,6 +476,7 @@
                         <outlet property="imageView" destination="V0C-64-Xdz" id="gzR-d1-0PB"/>
                         <outlet property="label" destination="tf1-Jb-UYx" id="uUx-OJ-opM"/>
                         <outlet property="mapView" destination="e9I-kl-MJs" id="8um-e8-jho"/>
+                        <outlet property="segmentedControl" destination="Gqh-m7-4OK" id="3bK-gn-W0x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnk-Cw-kcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -491,6 +497,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your description goes here." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXB-Ke-Q66">
                                 <rect key="frame" x="4" y="201" width="313" height="47"/>
+                                <animations/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES"/>
                                 </accessibility>
@@ -504,6 +511,7 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OWS-y3-U0x">
                                 <rect key="frame" x="40" y="239" width="240" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ROr-92-Ex9"/>
                                     <constraint firstAttribute="width" constant="240" id="vCN-O9-5KZ"/>
@@ -513,6 +521,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-5G-TCv">
                                 <rect key="frame" x="94" y="269" width="133" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="133" id="X7D-G8-9TK"/>
                                     <constraint firstAttribute="height" constant="30" id="pd4-eV-n1r"/>
@@ -524,6 +533,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si0-kf-3FG">
                                 <rect key="frame" x="45" y="294" width="74" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="74" id="15b-ca-Tr1"/>
                                     <constraint firstAttribute="height" constant="30" id="J1V-jf-YRL"/>
@@ -535,6 +545,7 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="go9-g1-5IH">
                                 <rect key="frame" x="20" y="322" width="125" height="125"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="PuH-kU-pAS"/>
                                     <constraint firstAttribute="height" constant="125" id="gJB-Ky-umt"/>
@@ -542,6 +553,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNt-Zb-btS">
                                 <rect key="frame" x="193" y="294" width="97" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GQx-6O-7ZL"/>
                                     <constraint firstAttribute="width" constant="97" id="rCr-pO-YQA"/>
@@ -553,6 +565,7 @@
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9of-wW-Bsj">
                                 <rect key="frame" x="176" y="322" width="130" height="125"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="suB-qi-scH"/>
                                     <constraint firstAttribute="height" constant="125" id="xmw-G2-5nz"/>
@@ -560,6 +573,7 @@
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9H-Su-siT">
                                 <rect key="frame" x="120" y="132" width="81" height="40"/>
+                                <animations/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES"/>
                                 </accessibility>
@@ -568,6 +582,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="1" green="0.56272324429999998" blue="0.23505908210000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="OWS-y3-U0x" firstAttribute="centerX" secondItem="Bq3-yY-ws4" secondAttribute="centerX" id="2my-Zm-DeW"/>
