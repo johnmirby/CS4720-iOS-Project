@@ -461,8 +461,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g0m-su-3Ts"/>
         <segue reference="uWq-uN-CEu"/>
         <segue reference="jCK-kf-Vrv"/>
+        <segue reference="g0m-su-3Ts"/>
     </inferredMetricsTieBreakers>
 </document>
