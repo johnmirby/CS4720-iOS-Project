@@ -21,13 +21,11 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var descriptionText: UITextField!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet var label: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
     
     var imageVal:UIImage?
-    var descriptionVal:String?
     var locationVal:CLLocation?
     
     @IBAction func updateMarkerLocation(sender: AnyObject) {
@@ -176,10 +174,7 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
             print(error)
         }
         do {
-            descriptionVal = try String(contentsOfFile: descriptionPath, encoding: NSUTF8StringEncoding)
-            
-            //Update the description
-            descriptionLabel.text! = descriptionVal!
+            descriptionText.text! = try String(contentsOfFile: descriptionPath, encoding: NSUTF8StringEncoding)
             
         } catch let error as NSError {
             print(error)
@@ -223,12 +218,6 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
         }
     }
     
-    
-    @IBAction func updateDescription(sender: AnyObject) {
-        descriptionLabel.text! = descriptionText.text!
-        descriptionVal = descriptionText.text!
-    }
-    
     @IBAction func addImage(sender: UIButton) {
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
             imagePicker =  UIImagePickerController()
@@ -263,7 +252,7 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
         super.touchesBegan(touches, withEvent: event)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    @IBAction func saveListItem(sender: AnyObject) {
         if (imageVal != nil){
             let path = NSTemporaryDirectory() + nameToDisplay + "_image.png"
             do {
@@ -272,10 +261,10 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
                 print(error)
             }
         }
-        if (descriptionVal != nil){
+        if (!descriptionText.text!.isEmpty){
             let path = NSTemporaryDirectory() + nameToDisplay + "_description.txt"
             do {
-                try descriptionVal!.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+                try descriptionText.text!.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
                 
             } catch let error as NSError {
                 print(error)
@@ -304,6 +293,10 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
             try writeString.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
         } catch let error as NSError {
             print(error)
+        }
+        
+        if let navigationController = self.navigationController{
+            navigationController.popViewControllerAnimated(true)
         }
     }
 }

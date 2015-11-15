@@ -12,6 +12,7 @@ class ViewController5: UIViewController {
     
     var tableData = [String]()
     var valueToPass:String!
+    var emptyList = false
     
     @IBOutlet var textField: UITextField!
     @IBOutlet var tableView: UITableView!
@@ -25,6 +26,12 @@ class ViewController5: UIViewController {
             tableData = readString.componentsSeparatedByString("\n")
         } catch let error as NSError {
             print(error)
+        }
+        
+        if (tableData.count == 0){
+            tableData.append("No Custom List Items")
+            tableView.reloadData()
+            emptyList = true
         }
     }
     
@@ -67,9 +74,16 @@ class ViewController5: UIViewController {
     }
     
     @IBAction func addItem(sender: AnyObject) {
-        tableData.append(String(tableData.count + 1) + ". " + textField.text! as String!)
-        tableView.reloadData()
-        
+        if (emptyList){
+            tableData[0] = String(tableData.count) + ". " + textField.text! as String!
+            tableView.reloadData()
+            emptyList = false
+        }
+        else {
+            tableData.append(String(tableData.count + 1) + ". " + textField.text! as String!)
+            tableView.reloadData()
+            emptyList = false
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -78,12 +92,14 @@ class ViewController5: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        let path = NSTemporaryDirectory() + "customList.txt"
-        let joined = tableData.joinWithSeparator("\n")
-        do {
-            try joined.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
-        } catch let error as NSError {
-            print(error)
+        if (!emptyList){
+            let path = NSTemporaryDirectory() + "customList.txt"
+            let joined = tableData.joinWithSeparator("\n")
+            do {
+                try joined.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+            } catch let error as NSError {
+                print(error)
+            }
         }
     }
 }
