@@ -182,7 +182,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ8-LZ-Q3b">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ8-LZ-Q3b">
                                 <rect key="frame" x="0.0" y="184" width="320" height="21"/>
                                 <animations/>
                                 <accessibility key="accessibilityConfiguration">
@@ -192,20 +192,32 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNZ-aE-kGe">
+                                <rect key="frame" x="113" y="329" width="94" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Leaderboard"/>
+                                <connections>
+                                    <segue destination="ZjK-JX-oHh" kind="push" id="6yJ-Q4-wJk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="0.56272324429999998" blue="0.23505908210000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="qQ8-LZ-Q3b" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-90" id="9gN-EO-Va1"/>
-                            <constraint firstItem="vJV-5t-Kuj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Brd-x7-7E7"/>
-                            <constraint firstItem="Bdk-Wc-rKv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Sjw-eI-Nor"/>
-                            <constraint firstItem="CnW-sm-Ufi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-60" id="VEM-d5-VVL"/>
-                            <constraint firstItem="Xmt-lc-aeU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="X7x-Pu-uVk"/>
-                            <constraint firstItem="Bdk-Wc-rKv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="k15-Pd-OlB"/>
-                            <constraint firstItem="Xmt-lc-aeU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mo4-Dn-FWr"/>
-                            <constraint firstItem="CnW-sm-Ufi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pYH-pU-Mkr"/>
-                            <constraint firstItem="qQ8-LZ-Q3b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wRw-DO-Veh"/>
-                            <constraint firstItem="vJV-5t-Kuj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="30" id="wqy-VQ-W2z"/>
+                            <constraint firstItem="rNZ-aE-kGe" firstAttribute="centerX" secondItem="vJV-5t-Kuj" secondAttribute="centerX" id="65O-eY-nyc"/>
+                            <constraint firstItem="qQ8-LZ-Q3b" firstAttribute="centerX" secondItem="CnW-sm-Ufi" secondAttribute="centerX" id="Ben-lu-Ap8"/>
+                            <constraint firstAttribute="trailing" secondItem="qQ8-LZ-Q3b" secondAttribute="trailing" id="D0s-1P-Lq4"/>
+                            <constraint firstItem="CnW-sm-Ufi" firstAttribute="top" secondItem="qQ8-LZ-Q3b" secondAttribute="bottom" constant="8" symbolic="YES" id="FnJ-ax-3v4"/>
+                            <constraint firstItem="Bdk-Wc-rKv" firstAttribute="centerX" secondItem="CnW-sm-Ufi" secondAttribute="centerX" id="IOi-Lu-Qgl"/>
+                            <constraint firstItem="Xmt-lc-aeU" firstAttribute="top" secondItem="Bdk-Wc-rKv" secondAttribute="bottom" id="O12-nH-gkY"/>
+                            <constraint firstItem="Bdk-Wc-rKv" firstAttribute="top" secondItem="CnW-sm-Ufi" secondAttribute="bottom" constant="5" id="SPM-tj-7xs"/>
+                            <constraint firstItem="Xmt-lc-aeU" firstAttribute="centerX" secondItem="vJV-5t-Kuj" secondAttribute="centerX" id="Uv7-lA-zxA"/>
+                            <constraint firstItem="vJV-5t-Kuj" firstAttribute="top" secondItem="Xmt-lc-aeU" secondAttribute="bottom" id="ZWn-Lk-bYs"/>
+                            <constraint firstItem="qQ8-LZ-Q3b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eDd-Gl-HbW"/>
+                            <constraint firstItem="rNZ-aE-kGe" firstAttribute="top" secondItem="vJV-5t-Kuj" secondAttribute="bottom" id="kE2-ke-Jcs"/>
+                            <constraint firstItem="rNZ-aE-kGe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="97" id="rst-Ak-DqH"/>
+                            <constraint firstItem="Xmt-lc-aeU" firstAttribute="centerX" secondItem="Bdk-Wc-rKv" secondAttribute="centerX" id="rz7-68-qxW"/>
+                            <constraint firstItem="Xmt-lc-aeU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wzr-Yq-SEB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="UVA Bucket List" id="pKC-Kt-vWV"/>
@@ -337,6 +349,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81w-bY-6jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="808" y="197"/>
+        </scene>
+        <!--View Controller7-->
+        <scene sceneID="JJN-1L-93r">
+            <objects>
+                <viewController id="ZjK-JX-oHh" customClass="ViewController7" customModule="UVA_Bucket_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="if0-o9-a33"/>
+                        <viewControllerLayoutGuide type="bottom" id="yaO-mo-IMJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wYa-jy-MVB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qx9-2u-TSh">
+                                <rect key="frame" x="40" y="111" width="240" height="402"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZjK-JX-oHh" id="1H9-1O-fHu"/>
+                                    <outlet property="delegate" destination="ZjK-JX-oHh" id="ZzF-Vm-ryB"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UVA Bucket List Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9j-NP-oij">
+                                <rect key="frame" x="48" y="82" width="224" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="0.56272324429999998" blue="0.23505908210000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Qx9-2u-TSh" firstAttribute="centerX" secondItem="wYa-jy-MVB" secondAttribute="centerX" id="6si-I1-eTf"/>
+                            <constraint firstItem="yaO-mo-IMJ" firstAttribute="top" secondItem="Qx9-2u-TSh" secondAttribute="bottom" constant="55" id="IKz-WO-4Rd"/>
+                            <constraint firstItem="Qx9-2u-TSh" firstAttribute="centerX" secondItem="F9j-NP-oij" secondAttribute="centerX" id="Y9L-qJ-sFd"/>
+                            <constraint firstItem="Qx9-2u-TSh" firstAttribute="leading" secondItem="wYa-jy-MVB" secondAttribute="leadingMargin" constant="24" id="oI4-wt-Qbu"/>
+                            <constraint firstItem="F9j-NP-oij" firstAttribute="top" secondItem="if0-o9-a33" secondAttribute="bottom" constant="62" id="phK-e0-8h5"/>
+                            <constraint firstItem="Qx9-2u-TSh" firstAttribute="top" secondItem="F9j-NP-oij" secondAttribute="bottom" constant="8" symbolic="YES" id="zH8-fw-k7w"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="JC1-tc-Z9n"/>
+                    <connections>
+                        <outlet property="tableView" destination="Qx9-2u-TSh" id="whf-jd-1I3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fbi-sH-8Z4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="840"/>
         </scene>
         <!--Detail View-->
         <scene sceneID="pcn-9k-nm5">
@@ -581,6 +642,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="uWq-uN-CEu"/>
-        <segue reference="ADN-LU-4Df"/>
+        <segue reference="jCK-kf-Vrv"/>
     </inferredMetricsTieBreakers>
 </document>
