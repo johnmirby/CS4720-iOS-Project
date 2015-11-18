@@ -32,10 +32,36 @@ class ViewController7: UIViewController {
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
     }
     
-    override func viewDidLoad() {
-        retrieveScores()
+    override func viewWillAppear(animated: Bool) {
+        self.submitScore()
+        self.retrieveScores()
     }
     
+    func submitScore() {
+        var fullName = ""
+        var totalScore = 0
+        do {
+            let path = NSTemporaryDirectory() + "userInfo.txt"
+            let readString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+            var valuesArray = readString.componentsSeparatedByString(",")
+            fullName = valuesArray[0] + "%20" + valuesArray[1]
+        } catch let error as NSError {
+            print(error)
+        }
+        do {
+            let path = NSTemporaryDirectory() + "totalScore.txt"
+            let readString = try String(contentsOfFile: path)
+            totalScore = Int(readString)!
+        } catch let error as NSError {
+            print(error)
+        }
+        if (!fullName.isEmpty){
+            let urlPath = "http://dreamlo.com/lb/" + dreamloPrivate + "/add/" + fullName + "/" + totalScore.description
+            guard let endpoint = NSURL(string: urlPath) else { print("Error creating endpoint"); return }
+            let request = NSMutableURLRequest(URL: endpoint)
+            NSURLSession.sharedSession().dataTaskWithRequest(request).resume()
+        }
+    }
         
     func retrieveScores() {
         let urlPath = "http://dreamlo.com/lb/" + dreamloPublic + "/json"
@@ -46,7 +72,6 @@ class ViewController7: UIViewController {
                 guard let dat = data else { throw JSONError.NoData }
                 guard let json = try NSJSONSerialization.JSONObjectWithData(dat, options: []) as? NSDictionary else { throw JSONError.ConversionFailed }
                 
-                //TODO: Parse JSON and insert into TableData
                 if let dreamlo = json["dreamlo"] as? NSDictionary {
                     if let leaderboard = dreamlo["leaderboard"] as? NSDictionary {
                         if let entries = leaderboard["entry"] as? NSArray {
@@ -62,11 +87,21 @@ class ViewController7: UIViewController {
                         }
                     }
                 }
-                self.tableView.reloadData()
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.tableView.reloadData()
+                });
                 
             } catch let error as JSONError {
+                self.tableData.append("Could not load scores")
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.tableView.reloadData()
+                });
                 print(error.rawValue)
             } catch {
+                self.tableData.append("Could not load scores")
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.tableView.reloadData()
+                });
                 print(error)
             }
         }.resume()

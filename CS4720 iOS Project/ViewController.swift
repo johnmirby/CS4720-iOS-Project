@@ -37,7 +37,6 @@ class ViewController: UIViewController {
             welcomeLabel.text = "Welcome " + nameToDisplay + "!"
         }
         scoreLabel.text = String(bucketListNum) + " of 116 Bucket List Items Completed"
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,6 +54,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 
