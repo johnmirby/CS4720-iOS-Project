@@ -12,6 +12,9 @@ import CoreLocation
 
 class ViewController6: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate  {
     
+    let dreamloPrivate = "QvOwrk2eEUyodUOdyWDHhQiHmXZ8tK_kWP1D4O_hmHwQ"
+    let dreamloPublic = "564a5d406e51b612c8e258e5"
+    
     var locationManager: CLLocationManager?
     
     var nameToDisplay = ""

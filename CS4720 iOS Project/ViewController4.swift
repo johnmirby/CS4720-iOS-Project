@@ -12,6 +12,9 @@ import CoreLocation
 
 class ViewController4: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate  {
     
+    let dreamloPrivate = "QvOwrk2eEUyodUOdyWDHhQiHmXZ8tK_kWP1D4O_hmHwQ"
+    let dreamloPublic = "564a5d406e51b612c8e258e5"
+    
     var locationManager: CLLocationManager?
     
     var bucketListNum = 0;
@@ -295,8 +298,38 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
             print(error)
         }
         
+        dispatch_async(dispatch_get_main_queue(), {
+            self.submitScore()
+        });
+        
         if let navigationController = self.navigationController{
             navigationController.popViewControllerAnimated(true)
+        }
+    }
+    
+    func submitScore() {
+        var fullName = ""
+        var totalScore = 0
+        do {
+            let path = NSTemporaryDirectory() + "userInfo.txt"
+            let readString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+            var valuesArray = readString.componentsSeparatedByString(",")
+            fullName = valuesArray[0] + "%20" + valuesArray[1]
+        } catch let error as NSError {
+            print(error)
+        }
+        do {
+            let path = NSTemporaryDirectory() + "totalScore.txt"
+            let readString = try String(contentsOfFile: path)
+            totalScore = Int(readString)!
+        } catch let error as NSError {
+            print(error)
+        }
+        if (!fullName.isEmpty){
+            let urlPath = "http://dreamlo.com/lb/" + dreamloPrivate + "/add/" + fullName + "/" + totalScore.description
+            guard let endpoint = NSURL(string: urlPath) else { print("Error creating endpoint"); return }
+            let request = NSMutableURLRequest(URL: endpoint)
+            NSURLSession.sharedSession().dataTaskWithRequest(request).resume()
         }
     }
 }
