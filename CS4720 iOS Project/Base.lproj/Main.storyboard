@@ -49,9 +49,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWI-tt-Mey">
-                                <rect key="frame" x="136" y="374" width="49" height="25"/>
+                                <rect key="frame" x="92" y="374" width="136" height="37"/>
                                 <animations/>
-                                <state key="normal" title="Submit"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="YVl-lV-kYe"/>
+                                </constraints>
+                                <state key="normal" title=" Submit ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="2"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="push" identifier="infoSegue" id="uWq-uN-CEu"/>
                                 </connections>
@@ -89,14 +102,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HS-ED-NaK">
-                                <rect key="frame" x="97" y="407" width="126" height="31"/>
-                                <animations/>
-                                <state key="normal" title="Skip this for now..."/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="push" identifier="skipInfoSegue" id="AwL-3Z-yUb"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="First Name" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjW-mK-5ea">
                                 <rect key="frame" x="119" y="173" width="83" height="21"/>
                                 <animations/>
@@ -104,25 +109,49 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HS-ED-NaK">
+                                <rect key="frame" x="92" y="419" width="136" height="38"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="LpD-vT-W0N"/>
+                                </constraints>
+                                <state key="normal" title=" Skip this for now... ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="2"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="push" identifier="skipInfoSegue" id="AwL-3Z-yUb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="0.56272324429999998" blue="0.23505908210000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0HS-ED-NaK" firstAttribute="centerY" secondItem="Hyq-ek-9h6" secondAttribute="centerY" constant="120" id="2qt-Is-Feu"/>
+                            <constraint firstItem="0HS-ED-NaK" firstAttribute="trailing" secondItem="nWI-tt-Mey" secondAttribute="trailing" id="0hl-c0-NGt"/>
                             <constraint firstItem="C7d-Xc-9Aj" firstAttribute="centerX" secondItem="Hyq-ek-9h6" secondAttribute="centerX" id="2qy-k5-bcB"/>
                             <constraint firstItem="C7d-Xc-9Aj" firstAttribute="centerY" secondItem="Hyq-ek-9h6" secondAttribute="centerY" id="6mt-Ve-wm6"/>
                             <constraint firstItem="GEL-c8-awG" firstAttribute="centerY" secondItem="Hyq-ek-9h6" secondAttribute="centerY" constant="-30" id="DcI-kN-t4Q"/>
-                            <constraint firstItem="nWI-tt-Mey" firstAttribute="centerY" secondItem="Hyq-ek-9h6" secondAttribute="centerY" constant="90" id="Iao-Rj-q8k"/>
-                            <constraint firstItem="0HS-ED-NaK" firstAttribute="centerX" secondItem="Hyq-ek-9h6" secondAttribute="centerX" id="QDq-Ca-m2v"/>
+                            <constraint firstItem="0HS-ED-NaK" firstAttribute="top" secondItem="nWI-tt-Mey" secondAttribute="bottom" constant="8" symbolic="YES" id="GW9-mN-Q3H"/>
+                            <constraint firstItem="nWI-tt-Mey" firstAttribute="centerX" secondItem="ZH5-h7-1jW" secondAttribute="centerX" id="Ohr-al-AWW"/>
                             <constraint firstItem="YcK-gY-r4H" firstAttribute="centerX" secondItem="Hyq-ek-9h6" secondAttribute="centerX" id="R9i-V9-qhE"/>
                             <constraint firstItem="PjW-mK-5ea" firstAttribute="centerX" secondItem="Hyq-ek-9h6" secondAttribute="centerX" id="SDq-HQ-CPB"/>
                             <constraint firstItem="ZH5-h7-1jW" firstAttribute="centerX" secondItem="Hyq-ek-9h6" secondAttribute="centerX" id="SFj-uM-xr4"/>
                             <constraint firstItem="ZH5-h7-1jW" firstAttribute="centerY" secondItem="Hyq-ek-9h6" secondAttribute="centerY" constant="60" id="YIr-VC-EXy"/>
                             <constraint firstItem="leR-FE-ynu" firstAttribute="centerX" secondItem="Hyq-ek-9h6" secondAttribute="centerX" id="Z56-pk-Y4D"/>
-                            <constraint firstItem="nWI-tt-Mey" firstAttribute="centerX" secondItem="Hyq-ek-9h6" secondAttribute="centerX" id="agv-FC-BV4"/>
+                            <constraint firstItem="f6D-Ff-gos" firstAttribute="top" secondItem="0HS-ED-NaK" secondAttribute="bottom" constant="111" id="hkr-f2-5xQ"/>
                             <constraint firstItem="YcK-gY-r4H" firstAttribute="centerY" secondItem="Hyq-ek-9h6" secondAttribute="centerY" constant="-60" id="lgY-8v-kfI"/>
+                            <constraint firstItem="0HS-ED-NaK" firstAttribute="leading" secondItem="nWI-tt-Mey" secondAttribute="leading" id="nFo-ip-ZZw"/>
+                            <constraint firstItem="nWI-tt-Mey" firstAttribute="top" secondItem="ZH5-h7-1jW" secondAttribute="bottom" constant="8" symbolic="YES" id="qBM-Tm-o7j"/>
                             <constraint firstItem="leR-FE-ynu" firstAttribute="centerY" secondItem="Hyq-ek-9h6" secondAttribute="centerY" constant="30" id="qRv-aH-o3B"/>
                             <constraint firstItem="GEL-c8-awG" firstAttribute="centerX" secondItem="Hyq-ek-9h6" secondAttribute="centerX" id="rMO-7c-Kax"/>
+                            <constraint firstItem="nWI-tt-Mey" firstAttribute="leading" secondItem="Hyq-ek-9h6" secondAttribute="leadingMargin" constant="76" id="rzV-Ar-Pkx"/>
                             <constraint firstItem="PjW-mK-5ea" firstAttribute="centerY" secondItem="Hyq-ek-9h6" secondAttribute="centerY" constant="-90" id="vyB-5B-upP"/>
                         </constraints>
                     </view>
@@ -269,6 +298,7 @@
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="tableView" destination="tCM-OT-iqm" id="lZ9-aS-bJd"/>
                         <segue destination="70Z-Y4-llm" kind="push" identifier="detailSegue" id="g0m-su-3Ts"/>
                     </connections>
                 </viewController>
@@ -628,7 +658,7 @@
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Item" id="b2z-iT-pdM"/>
+                        <barButtonItem systemItem="action" id="b2z-iT-pdM"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="Zdf-Zf-DCW">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="M21-pS-8N7">

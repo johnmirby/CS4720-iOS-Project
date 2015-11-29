@@ -20,7 +20,9 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
     var bucketListNum = 0;
     
     var nameToDisplay = ""
+    var index = 0
     var imagePicker: UIImagePickerController!
+    var completedStatus = Array(count: 116, repeatedValue: "1")
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var descriptionText: UITextField!
@@ -166,7 +168,6 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
         let imagePath = NSTemporaryDirectory() + nameToDisplay + "_image.png"
         let descriptionPath = NSTemporaryDirectory() + nameToDisplay + "_description.txt"
         let locationPath = NSTemporaryDirectory() + nameToDisplay + "_location.txt"
-        let statusPath = NSTemporaryDirectory() + nameToDisplay + "_completedStatus.txt"
         do {
             imageVal = try UIImage(contentsOfFile: imagePath)
             
@@ -199,12 +200,13 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
             print(error)
         }
         do {
-            let readString = try String(contentsOfFile: statusPath)
-            let index = Int(readString)
-            segmentedControl.selectedSegmentIndex = index!
+            let path = NSTemporaryDirectory() + "completedStatus.txt"
+            let readString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+            completedStatus = readString.componentsSeparatedByString("\n")
         } catch let error as NSError {
             print(error)
         }
+        segmentedControl.selectedSegmentIndex = Int(completedStatus[index])!
     }
 
     override func didReceiveMemoryWarning() {
@@ -282,10 +284,11 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
                 print(error)
             }
         }
+        completedStatus[index] = segmentedControl.selectedSegmentIndex.description
         do {
-            let path = NSTemporaryDirectory() + nameToDisplay + "_completedStatus.txt"
-            let statusString = segmentedControl.selectedSegmentIndex.description
-            try statusString.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+            let path = NSTemporaryDirectory() + "completedStatus.txt"
+            let readString = completedStatus.joinWithSeparator("\n")
+            try readString.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
         } catch let error as NSError {
             print(error)
         }
