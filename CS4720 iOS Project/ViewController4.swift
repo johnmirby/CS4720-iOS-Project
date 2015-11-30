@@ -46,6 +46,19 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
         }
     }
     
+    @IBAction func shareButton(sender: AnyObject) {
+        if (imageVal != nil){
+            let objectsToShare = [nameToDisplay, imageVal!, descriptionText.text!]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
+        else {
+            let objectsToShare = [nameToDisplay, descriptionText.text!]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
+    }
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count == 0{
             //handle error here

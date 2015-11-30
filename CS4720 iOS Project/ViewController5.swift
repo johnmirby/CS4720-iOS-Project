@@ -12,6 +12,7 @@ class ViewController5: UIViewController {
     
     var tableData = [String]()
     var valueToPass:String!
+    var indexToPass:Int!
     var emptyList = false
     
     @IBOutlet var textField: UITextField!
@@ -19,20 +20,28 @@ class ViewController5: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         let path = NSTemporaryDirectory() + "customList.txt"
         do {
             let readString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
-            tableData = readString.componentsSeparatedByString("\n")
+            if (readString.isEmpty) {
+                tableData = [String]()
+            }
+            else {
+                tableData = readString.componentsSeparatedByString("\n")
+            }
         } catch let error as NSError {
             print(error)
         }
         
         if (tableData.count == 0){
             tableData.append("No Custom List Items")
-            tableView.reloadData()
             emptyList = true
         }
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,6 +58,7 @@ class ViewController5: UIViewController {
         if (segue.identifier == "customDetailSegue"){
             if let svc = segue.destinationViewController as? ViewController6 {
                 svc.nameToDisplay = valueToPass
+                svc.index = indexToPass
             }
         }
     }
@@ -68,9 +78,11 @@ class ViewController5: UIViewController {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let indexPath = tableView.indexPathForSelectedRow!;
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
-        
-        valueToPass = currentCell.textLabel!.text
-        performSegueWithIdentifier("customDetailSegue", sender: self)
+        if (currentCell.textLabel!.text != "No Custom List Items"){
+            valueToPass = currentCell.textLabel!.text
+            indexToPass = indexPath.row
+            performSegueWithIdentifier("customDetailSegue", sender: self)
+        }
     }
     
     @IBAction func addItem(sender: AnyObject) {

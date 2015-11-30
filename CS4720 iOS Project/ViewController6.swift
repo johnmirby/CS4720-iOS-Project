@@ -18,6 +18,7 @@ class ViewController6: UIViewController, UINavigationControllerDelegate, UIImage
     var locationManager: CLLocationManager?
     
     var nameToDisplay = ""
+    var index = 0
     var imagePicker: UIImagePickerController!
     
     @IBOutlet weak var descriptionText: UITextField!
@@ -225,6 +226,55 @@ class ViewController6: UIViewController, UINavigationControllerDelegate, UIImage
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
+    }
+    
+    @IBAction func deleteButton(sender: AnyObject) {
+        
+        let controller = UIAlertController(title: "Delete Confirmation",
+            message: "Are you sure you want to delete this item?",
+            preferredStyle: .Alert)
+        
+        controller.addAction(UIAlertAction(title: "Cancel",
+            style: .Default,
+            handler: nil))
+        
+        controller.addAction(UIAlertAction(title: "Delete",
+            style: .Default,
+            handler: { (action: UIAlertAction) in
+                var tableData = [String]()
+                let path = NSTemporaryDirectory() + "customList.txt"
+                do {
+                    let readString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                    tableData = readString.componentsSeparatedByString("\n")
+                } catch let error as NSError {
+                    print(error)
+                }
+                tableData.removeAtIndex(self.index)
+                let joined = tableData.joinWithSeparator("\n")
+                do {
+                    try joined.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error)
+                }
+                if let navigationController = self.navigationController{
+                    navigationController.popViewControllerAnimated(true)
+                }
+        }))
+        
+        presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func shareButton(sender: AnyObject) {
+        if (imageVal != nil){
+            let objectsToShare = [nameToDisplay, imageVal!, descriptionText.text!]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
+        else {
+            let objectsToShare = [nameToDisplay, descriptionText.text!]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func saveListItem(sender: AnyObject) {
