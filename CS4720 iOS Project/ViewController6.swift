@@ -256,6 +256,24 @@ class ViewController6: UIViewController, UINavigationControllerDelegate, UIImage
                 } catch let error as NSError {
                     print(error)
                 }
+                let imagePath = NSTemporaryDirectory() + self.nameToDisplay + "_image.png"
+                let descriptionPath = NSTemporaryDirectory() + self.nameToDisplay + "_description.txt"
+                let locationPath = NSTemporaryDirectory() + self.nameToDisplay + "_location.txt"
+                do {
+                    try NSFileManager.defaultManager().removeItemAtPath(imagePath)
+                } catch let error as NSError {
+                    print(error)
+                }
+                do {
+                    try NSFileManager.defaultManager().removeItemAtPath(descriptionPath)
+                } catch let error as NSError {
+                    print(error)
+                }
+                do {
+                    try NSFileManager.defaultManager().removeItemAtPath(locationPath)
+                } catch let error as NSError {
+                    print(error)
+                }
                 if let navigationController = self.navigationController{
                     navigationController.popViewControllerAnimated(true)
                 }

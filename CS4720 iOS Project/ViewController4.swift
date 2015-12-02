@@ -46,6 +46,62 @@ class ViewController4: UIViewController, UINavigationControllerDelegate, UIImage
         }
     }
     
+    @IBAction func clearButton(sender: AnyObject) {
+        let controller = UIAlertController(title: "Clear Confirmation",
+            message: "Are you sure you want to clear this item? Your picture and information will be deleted.",
+            preferredStyle: .Alert)
+        
+        controller.addAction(UIAlertAction(title: "Cancel",
+            style: .Default,
+            handler: nil))
+        
+        controller.addAction(UIAlertAction(title: "Clear",
+            style: .Default,
+            handler: { (action: UIAlertAction) in
+                self.segmentedControl.selectedSegmentIndex = 1
+                self.imageView.image = nil
+                self.descriptionText.text = ""
+                self.mapView.removeAnnotations(self.mapView.annotations)
+                
+                self.completedStatus[self.index] = "1"
+                do {
+                    let path = NSTemporaryDirectory() + "completedStatus.txt"
+                    let readString = self.completedStatus.joinWithSeparator("\n")
+                    try readString.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error)
+                }
+                self.bucketListNum = self.bucketListNum - 1
+                do {
+                    let path = NSTemporaryDirectory() + "totalScore.txt"
+                    let writeString = self.bucketListNum.description
+                    try writeString.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error)
+                }
+                let imagePath = NSTemporaryDirectory() + self.nameToDisplay + "_image.png"
+                let descriptionPath = NSTemporaryDirectory() + self.nameToDisplay + "_description.txt"
+                let locationPath = NSTemporaryDirectory() + self.nameToDisplay + "_location.txt"
+                do {
+                    try NSFileManager.defaultManager().removeItemAtPath(imagePath)
+                } catch let error as NSError {
+                    print(error)
+                }
+                do {
+                    try NSFileManager.defaultManager().removeItemAtPath(descriptionPath)
+                } catch let error as NSError {
+                    print(error)
+                }
+                do {
+                    try NSFileManager.defaultManager().removeItemAtPath(locationPath)
+                } catch let error as NSError {
+                    print(error)
+                }
+        }))
+        
+        presentViewController(controller, animated: true, completion: nil)
+    }
+    
     @IBAction func shareButton(sender: AnyObject) {
         if (imageVal != nil){
             let objectsToShare = [nameToDisplay, imageVal!, descriptionText.text!]
